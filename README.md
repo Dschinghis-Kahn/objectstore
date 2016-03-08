@@ -34,7 +34,6 @@ public class TaskStore {
          * 5. Task(4)
          */
 
-
         // this method will block because the store is full now
         taskStore.addTask(new Task(5));
     }
