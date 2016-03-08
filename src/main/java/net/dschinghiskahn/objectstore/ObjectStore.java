@@ -14,7 +14,7 @@ import org.apache.log4j.Logger;
  */
 public class ObjectStore<E> {
     public static final long DEFAULT_MAX_SIZE = 1024;
-    private final Logger logger = Logger.getLogger(getClass().getName()); // NOPMD
+    private final Logger logger = Logger.getLogger(getClass()); // NOPMD
     private final long maxMemSize;
     private Queue<E> objectCache;
 
