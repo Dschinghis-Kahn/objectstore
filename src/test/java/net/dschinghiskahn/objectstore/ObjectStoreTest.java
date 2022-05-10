@@ -2,32 +2,22 @@ package net.dschinghiskahn.objectstore;
 
 import java.io.File;
 
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PatternLayout;
+import org.apache.logging.log4j.LogManager;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-@SuppressWarnings("PMD")
 public class ObjectStoreTest {
 
     private static final int MULTIPLE_TEST_SIZE = 1050;
 
     @BeforeClass
     public static void init() {
-        Logger.getRootLogger().setLevel(Level.INFO);
-        Logger.getRootLogger().removeAllAppenders();
-        ConsoleAppender appender = new ConsoleAppender();
-        appender.setLayout(new PatternLayout("%d %-5p: %m%n"));
-        appender.activateOptions();
-        Logger.getRootLogger().addAppender(appender);
     }
 
     @Test(timeout = 1000)
     public void singleString() {
-        Logger.getLogger(getClass()).info("Running test: singleString()");
+        LogManager.getLogger(getClass()).info("Running test: singleString()");
         String testObject = "test";
         ObjectStore<String> objectStore = new ObjectStore<String>();
         Assert.assertEquals(0, objectStore.getSize());
@@ -40,7 +30,7 @@ public class ObjectStoreTest {
 
     @Test(timeout = 1000)
     public void multipleStrings() {
-        Logger.getLogger(getClass()).info("Running test: multipleStrings()");
+    	LogManager.getLogger(getClass()).info("Running test: multipleStrings()");
         String testObject = "test";
         ObjectStore<String> objectStore = new ObjectStore<String>(ObjectStoreTest.MULTIPLE_TEST_SIZE);
         Assert.assertEquals(0, objectStore.getSize());
@@ -57,7 +47,7 @@ public class ObjectStoreTest {
 
     @Test(timeout = 1000)
     public void singleObject() {
-        Logger.getLogger(getClass()).info("Running test: singleObject()");
+    	LogManager.getLogger(getClass()).info("Running test: singleObject()");
         Object testObject = new Object();
         ObjectStore<Object> objectStore = new ObjectStore<Object>();
         Assert.assertEquals(0, objectStore.getSize());
@@ -70,7 +60,7 @@ public class ObjectStoreTest {
 
     @Test(timeout = 1000)
     public void multipleObjects() {
-        Logger.getLogger(getClass()).info("Running test: multipleObjects()");
+    	LogManager.getLogger(getClass()).info("Running test: multipleObjects()");
         Object testObject = new Object();
         ObjectStore<Object> objectStore = new ObjectStore<Object>(ObjectStoreTest.MULTIPLE_TEST_SIZE);
         Assert.assertEquals(0, objectStore.getSize());
@@ -87,7 +77,7 @@ public class ObjectStoreTest {
 
     @Test(timeout = 1000)
     public void singleInteger() {
-        Logger.getLogger(getClass()).info("Running test: singleInteger()");
+    	LogManager.getLogger(getClass()).info("Running test: singleInteger()");
         Integer testObject = 12346234;
         ObjectStore<Integer> objectStore = new ObjectStore<Integer>();
         Assert.assertEquals(0, objectStore.getSize());
@@ -100,7 +90,7 @@ public class ObjectStoreTest {
 
     @Test(timeout = 1000)
     public void multipleIntegers() {
-        Logger.getLogger(getClass()).info("Running test: multipleIntegers()");
+        LogManager.getLogger(getClass()).info("Running test: multipleIntegers()");
         Integer testObject = 0;
         ObjectStore<Integer> objectStore = new ObjectStore<Integer>(ObjectStoreTest.MULTIPLE_TEST_SIZE);
         Assert.assertEquals(0, objectStore.getSize());
@@ -117,7 +107,7 @@ public class ObjectStoreTest {
 
     @Test(timeout = 1000)
     public void singleLong() {
-        Logger.getLogger(getClass()).info("Running test: singleLong()");
+        LogManager.getLogger(getClass()).info("Running test: singleLong()");
         Long testObject = 123023542345234L;
         ObjectStore<Long> objectStore = new ObjectStore<Long>();
         Assert.assertEquals(0, objectStore.getSize());
@@ -130,7 +120,7 @@ public class ObjectStoreTest {
 
     @Test(timeout = 1000)
     public void multipleLongs() {
-        Logger.getLogger(getClass()).info("Running test: multipleLongs()");
+        LogManager.getLogger(getClass()).info("Running test: multipleLongs()");
         Long testObject = 0L;
         ObjectStore<Long> objectStore = new ObjectStore<Long>(ObjectStoreTest.MULTIPLE_TEST_SIZE);
         Assert.assertEquals(0, objectStore.getSize());
@@ -147,7 +137,7 @@ public class ObjectStoreTest {
 
     @Test(timeout = 1000)
     public void singleByte() {
-        Logger.getLogger(getClass()).info("Running test: singleByte()");
+        LogManager.getLogger(getClass()).info("Running test: singleByte()");
         Byte testObject = 2;
         ObjectStore<Byte> objectStore = new ObjectStore<Byte>();
         Assert.assertEquals(0, objectStore.getSize());
@@ -160,7 +150,7 @@ public class ObjectStoreTest {
 
     @Test(timeout = 1000)
     public void multipleBytes() {
-        Logger.getLogger(getClass()).info("Running test: multipleBytes()");
+        LogManager.getLogger(getClass()).info("Running test: multipleBytes()");
         Byte testObject = 0;
         ObjectStore<Byte> objectStore = new ObjectStore<Byte>(ObjectStoreTest.MULTIPLE_TEST_SIZE);
         Assert.assertEquals(0, objectStore.getSize());
@@ -177,7 +167,7 @@ public class ObjectStoreTest {
 
     @Test(timeout = 1000)
     public void singleFile() {
-        Logger.getLogger(getClass()).info("Running test: singleFile()");
+        LogManager.getLogger(getClass()).info("Running test: singleFile()");
         File testObject = new File("");
         ObjectStore<File> objectStore = new ObjectStore<File>();
         Assert.assertEquals(0, objectStore.getSize());
@@ -190,7 +180,7 @@ public class ObjectStoreTest {
 
     @Test(timeout = 1000)
     public void multipleFiles() {
-        Logger.getLogger(getClass()).info("Running test: multipleFiles()");
+        LogManager.getLogger(getClass()).info("Running test: multipleFiles()");
         ObjectStore<File> objectStore = new ObjectStore<File>(ObjectStoreTest.MULTIPLE_TEST_SIZE);
         Assert.assertEquals(0, objectStore.getSize());
         Assert.assertTrue(objectStore.isEmpty());
@@ -206,7 +196,7 @@ public class ObjectStoreTest {
 
     @Test(timeout = 1000)
     public void testPriority() {
-        Logger.getLogger(getClass()).info("Running test: testPriority()");
+        LogManager.getLogger(getClass()).info("Running test: testPriority()");
         ObjectStore<Long> objectStore = new ObjectStore<Long>(10, true);
         Assert.assertEquals(0, objectStore.getSize());
         Assert.assertTrue(objectStore.isEmpty());
@@ -224,9 +214,9 @@ public class ObjectStoreTest {
         Assert.assertTrue(objectStore.isEmpty());
     }
 
-    @Test(timeout = 2000)
+    @Test(timeout = 3000)
     public void maxSize() {
-        Logger.getLogger(getClass()).info("Running test: maxSize()");
+        LogManager.getLogger(getClass()).info("Running test: maxSize()");
         long startTime = System.currentTimeMillis();
         final ObjectStore<Integer> objectStore = new ObjectStore<Integer>(10);
         Assert.assertEquals(0, objectStore.getSize());
@@ -241,7 +231,7 @@ public class ObjectStoreTest {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
-                    Logger.getLogger(getClass()).error("Error while waiting!", e);
+                    LogManager.getLogger(getClass()).error("Error while waiting!", e);
                 }
                 objectStore.get();
             }

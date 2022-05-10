@@ -4,7 +4,8 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Stores objects in a cache.
@@ -14,7 +15,7 @@ import org.apache.log4j.Logger;
  */
 public class ObjectStore<E> {
     public static final long DEFAULT_MAX_SIZE = 1024;
-    private final Logger logger = Logger.getLogger(getClass()); // NOPMD
+    private final Logger logger = LogManager.getLogger(getClass()); // NOPMD
     private final long maxMemSize;
     private Queue<E> objectCache;
 
